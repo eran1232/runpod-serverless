@@ -7,6 +7,10 @@ WORKDIR /
 # Configure LD_LIBRARY_PATH
 ENV LD_LIBRARY_PATH="/opt/conda/lib/python3.11/site-packages/nvidia/cudnn/lib:/opt/conda/lib/python3.11/site-packages/nvidia/cublas/lib"
 
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends ffmpeg && \
+    rm -rf /var/lib/apt/lists/*
+    
 # Install runpod
 RUN pip install runpod
 RUN pip install faster-whisper==1.1.1
