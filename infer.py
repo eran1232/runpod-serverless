@@ -128,7 +128,7 @@ def transcribe_core(engine, model_name, audio_file):
     if engine == 'faster-whisper':
         segs, _ = current_model.transcribe(audio_file, language='he', word_timestamps=True)
     elif engine == 'stable-whisper':
-        res = current_model.transcribe(audio_file, language='he', word_timestamps=True)
+        res = current_model.transcribe(audio_file, language='he', word_timestamps=True, beam_size=5, temperture=0.2)
         segs = res.segments
 
     ret = { 'segments' : [] }
